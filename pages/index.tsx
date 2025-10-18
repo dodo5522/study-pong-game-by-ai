@@ -5,7 +5,7 @@ import DialogTitle from '@mui/material/DialogTitle';
 import DialogContent from '@mui/material/DialogContent';
 import DialogActions from '@mui/material/DialogActions';
 import PongGame from '../components/PongGame';
-import { Button, TextField } from '../src/components/ui';
+import { Button, TextField } from '../components/ui';
 
 export default function Home() {
   const [playerName, setPlayerName] = useState('');
@@ -42,8 +42,8 @@ export default function Home() {
               <TextField
                 value={tempPlayerName}
                 onChange={(e) => setTempPlayerName(e.target.value)}
-                placeholder="プレイヤー名を入力"
-                label="プレイヤー名"
+                placeholder='プレイヤー名を入力'
+                label='プレイヤー名'
               />
             </div>
           </DialogContent>
