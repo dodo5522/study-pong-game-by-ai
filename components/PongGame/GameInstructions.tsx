@@ -1,14 +1,19 @@
 import React from 'react';
+import { Stack, Typography } from '@mui/material';
 
 const GameInstructions: React.FC = () => {
   return (
-    <div style={{ color: '#fff', marginTop: '20px', textAlign: 'center' }}>
-      <p><strong>Controls:</strong></p>
-      <p>Mouse: Move your paddle up and down</p>
-      <p>Arrow Keys: Use ↑ and ↓ to control your paddle</p>
-      <p><span style={{ color: '#0f0' }}>Green Paddle</span>: Player (You)</p>
-      <p><span style={{ color: '#f00' }}>Red Paddle</span>: Computer (AI)</p>
-    </div>
+    <Stack spacing={1} sx={{ color: '#fff', marginTop: '20px', textAlign: 'center' }}>
+      <Typography variant="body1" fontWeight="bold">Controls:</Typography>
+      <Typography variant="body2">Mouse: Move your paddle up and down</Typography>
+      <Typography variant="body2">Arrow Keys: Use ↑ and ↓ to control your paddle</Typography>
+      <Typography variant="body2">
+        <Typography component="span" sx={{ color: '#0f0' }}>Green Paddle</Typography>: Player (You)
+      </Typography>
+      <Typography variant="body2">
+        <Typography component="span" sx={{ color: '#f00' }}>Red Paddle</Typography>: Computer (AI)
+      </Typography>
+    </Stack>
   );
 };
 

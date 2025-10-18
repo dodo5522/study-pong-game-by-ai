@@ -1,4 +1,5 @@
 import React from 'react';
+import { Button, Stack } from '@mui/material';
 
 interface GameControlsProps {
   gameStarted: boolean;
@@ -8,40 +9,27 @@ interface GameControlsProps {
 
 const GameControls: React.FC<GameControlsProps> = ({ gameStarted, onStartGame, onResetGame }) => {
   return (
-    <div style={{ marginTop: '20px', display: 'flex', gap: '10px' }}>
+    <Stack direction="row" spacing={1} sx={{ marginTop: '20px' }}>
       {!gameStarted ? (
-        <button
+        <Button
+          variant="contained"
+          color="success"
           onClick={onStartGame}
-          style={{
-            padding: '10px 20px',
-            fontSize: '16px',
-            cursor: 'pointer',
-            backgroundColor: '#0f0',
-            border: 'none',
-            borderRadius: '5px',
-            fontWeight: 'bold',
-          }}
+          sx={{ fontWeight: 'bold' }}
         >
           Start Game
-        </button>
+        </Button>
       ) : (
-        <button
+        <Button
+          variant="contained"
+          color="error"
           onClick={onResetGame}
-          style={{
-            padding: '10px 20px',
-            fontSize: '16px',
-            cursor: 'pointer',
-            backgroundColor: '#f00',
-            border: 'none',
-            borderRadius: '5px',
-            color: '#fff',
-            fontWeight: 'bold',
-          }}
+          sx={{ fontWeight: 'bold' }}
         >
           Reset Game
-        </button>
+        </Button>
       )}
-    </div>
+    </Stack>
   );
 };
 
