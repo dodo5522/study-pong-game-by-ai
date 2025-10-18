@@ -48,9 +48,9 @@ npm start
 
 ## 技術スタック
 
-- **React** 18.2.0 - UIライブラリ
-- **Next.js** 13.5.6 - Reactフレームワーク
-- **TypeScript** 5.6.2 - 型安全性
+- **React** - UIライブラリ
+- **Next.js** - Reactフレームワーク
+- **TypeScript** - 型安全性
 - **HTML5 Canvas** - ゲームレンダリング
 
 ## プロジェクト構造
