@@ -1,4 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
+import GameCanvas from './PongGame/GameCanvas';
+import GameControls from './PongGame/GameControls';
+import GameInstructions from './PongGame/GameInstructions';
 
 interface Paddle {
   x: number;
@@ -314,54 +317,18 @@ const PongGame: React.FC = () => {
   return (
     <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', padding: '20px' }}>
       <h1 style={{ color: '#fff', marginBottom: '20px' }}>Pong Game</h1>
-      <canvas
-        ref={canvasRef}
+      <GameCanvas
+        canvasRef={canvasRef}
         width={CANVAS_WIDTH}
         height={CANVAS_HEIGHT}
         onMouseMove={handleMouseMove}
-        style={{ border: '2px solid #fff', cursor: 'none' }}
       />
-      <div style={{ marginTop: '20px', display: 'flex', gap: '10px' }}>
-        {!gameStarted ? (
-          <button
-            onClick={handleStartGame}
-            style={{
-              padding: '10px 20px',
-              fontSize: '16px',
-              cursor: 'pointer',
-              backgroundColor: '#0f0',
-              border: 'none',
-              borderRadius: '5px',
-              fontWeight: 'bold',
-            }}
-          >
-            Start Game
-          </button>
-        ) : (
-          <button
-            onClick={handleResetGame}
-            style={{
-              padding: '10px 20px',
-              fontSize: '16px',
-              cursor: 'pointer',
-              backgroundColor: '#f00',
-              border: 'none',
-              borderRadius: '5px',
-              color: '#fff',
-              fontWeight: 'bold',
-            }}
-          >
-            Reset Game
-          </button>
-        )}
-      </div>
-      <div style={{ color: '#fff', marginTop: '20px', textAlign: 'center' }}>
-        <p><strong>Controls:</strong></p>
-        <p>Mouse: Move your paddle up and down</p>
-        <p>Arrow Keys: Use ↑ and ↓ to control your paddle</p>
-        <p><span style={{ color: '#0f0' }}>Green Paddle</span>: Player (You)</p>
-        <p><span style={{ color: '#f00' }}>Red Paddle</span>: Computer (AI)</p>
-      </div>
+      <GameControls
+        gameStarted={gameStarted}
+        onStartGame={handleStartGame}
+        onResetGame={handleResetGame}
+      />
+      <GameInstructions />
     </div>
   );
 };
