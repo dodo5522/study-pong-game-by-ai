@@ -1,5 +1,7 @@
 # Pong Game - React/Next.js + TypeScript
 
+[日本語版 README はこちら / Japanese README](README.ja.md)
+
 A classic Pong game implementation using React, Next.js, and TypeScript.
 
 ## Features
