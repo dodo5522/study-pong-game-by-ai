@@ -1,80 +1,80 @@
 # Pong Game - React/Next.js + TypeScript
 
-A classic Pong game implementation using React, Next.js, and TypeScript.
+React、Next.js、TypeScriptを使用したクラシックなピンポンゲームの実装です。
 
-## Features
+## 機能
 
-- **Player Controls**: Control the left paddle (green) using mouse or arrow keys (↑/↓)
-- **Computer AI**: The right paddle (red) is controlled by a simple AI that follows the ball
-- **Ball Physics**: Realistic bouncing with collision detection for paddles and walls
-- **Scoring System**: Track points for both player and computer
-- **Visual Feedback**: Color-coded paddles and scoreboard
+- **プレイヤー操作**: マウスまたは矢印キー（↑/↓）を使用して左側のパドル（緑色）を操作
+- **コンピュータAI**: 右側のパドル（赤色）はボールを追従するシンプルなAIによって制御
+- **ボール物理演算**: パドルと壁の衝突判定によるリアルなバウンド
+- **スコアシステム**: プレイヤーとコンピュータの得点を記録
+- **視覚的フィードバック**: 色分けされたパドルとスコアボード
 
-## How to Play
+## 遊び方
 
-1. Click "Start Game" to begin
-2. Control your paddle (green, on the left) by:
-   - Moving your mouse up and down, OR
-   - Using the ↑ and ↓ arrow keys
-3. Try to hit the ball past the computer's paddle (red, on the right)
-4. First to score wins! (Game continues indefinitely)
-5. Click "Reset Game" to start over with scores at 0-0
+1. 「Start Game」ボタンをクリックしてゲームを開始
+2. パドル（緑色、左側）を以下の方法で操作:
+   - マウスを上下に動かす、または
+   - ↑と↓の矢印キーを使用
+3. コンピュータのパドル（赤色、右側）を抜いてボールを打ち返す
+4. 先に得点した方が勝利！（ゲームは無限に続きます）
+5. 「Reset Game」ボタンをクリックしてスコアを0-0でリセット
 
-## Installation
+## インストール
 
 ```bash
-# Install dependencies
+# 依存関係をインストール
 npm install
 ```
 
-## Development
+## 開発
 
 ```bash
-# Run development server
+# 開発サーバーを起動
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) in your browser.
+ブラウザで [http://localhost:3000](http://localhost:3000) を開きます。
 
-## Production Build
+## プロダクションビルド
 
 ```bash
-# Build the application
+# アプリケーションをビルド
 npm run build
 
-# Start production server
+# プロダクションサーバーを起動
 npm start
 ```
 
-## Technologies
+## 技術スタック
 
-- **React** 18.2.0 - UI library
-- **Next.js** 13.5.6 - React framework
-- **TypeScript** 5.6.2 - Type safety
-- **HTML5 Canvas** - Game rendering
+- **React** 18.2.0 - UIライブラリ
+- **Next.js** 13.5.6 - Reactフレームワーク
+- **TypeScript** 5.6.2 - 型安全性
+- **HTML5 Canvas** - ゲームレンダリング
 
-## Project Structure
+## プロジェクト構造
 
 ```
 ├── components/
-│   └── PongGame.tsx      # Main game component with all game logic
+│   └── PongGame.tsx      # すべてのゲームロジックを含むメインゲームコンポーネント
 ├── pages/
-│   ├── _app.tsx          # Next.js app wrapper
-│   └── index.tsx         # Home page
-├── next.config.js        # Next.js configuration
-├── tsconfig.json         # TypeScript configuration
-└── package.json          # Dependencies and scripts
+│   ├── _app.tsx          # Next.jsアプリラッパー
+│   └── index.tsx         # ホームページ
+├── next.config.js        # Next.js設定
+├── tsconfig.json         # TypeScript設定
+└── package.json          # 依存関係とスクリプト
 ```
 
-## Game Mechanics
+## ゲームメカニクス
 
-- **Canvas Size**: 800x600 pixels
-- **Paddle Size**: 10x100 pixels
-- **Ball Size**: 8px radius
-- **Ball Speed**: 5 pixels per frame
-- **Paddle Speed**: 6 pixels per frame (player), 4.2 pixels per frame (computer)
-- **Frame Rate**: 60 FPS using `requestAnimationFrame`
+- **キャンバスサイズ**: 800x600ピクセル
+- **パドルサイズ**: 10x100ピクセル
+- **ボールサイズ**: 半径8ピクセル
+- **ボール速度**: フレームあたり5ピクセル
+- **パドル速度**: フレームあたり6ピクセル（プレイヤー）、フレームあたり4.2ピクセル（コンピュータ）
+- **フレームレート**: `requestAnimationFrame`を使用した60 FPS
 
-## License
+## ライセンス
 
 MIT
