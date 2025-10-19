@@ -34,5 +34,11 @@ React, Next.js, TypeScriptを使用した、クラシックなピンポンゲー
 ## UIガイドライン
 
 - アプリケーションはモダンでクリーンなデザインとする。
-- UIコンポーネントは、/componentsディレクトリ内で再利用可能な形で実装する。
 - UIコンポーネントは、1個のtsxファイルにつき1コンポーネントとする。ただし、そのコンポーネントが必要とする定義（Propsインタフェースクラスなど）は同じtsxファイルに記述して良い。
+- UIコンポーネントは、/src/componentsディレクトリ内で再利用可能な形で実装する。
+- /src/componentsディレクトリ内のUIコンポーネントは、Atomic Designの考え方に基づき、atoms, molecules, organisms, templates, pagesの5つのサブディレクトリに分類して実装する。
+    - atoms: ボタン、入力フィールド、ラベルなどの基本的なUI要素。
+    - molecules: 複数のatomsを組み合わせたUI要素
+    - organisms: 複数のmoleculesやatomsを組み合わせた複雑なUIセクション
+    - templates: organismsを組み合わせたページのレイアウト
+    - pages: アプリケーションの各ページコンポーネント

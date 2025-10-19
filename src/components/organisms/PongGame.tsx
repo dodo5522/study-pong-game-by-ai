@@ -1,7 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
-import GameCanvas from './PongGame/GameCanvas';
-import GameControls from './PongGame/GameControls';
-import GameInstructions from './PongGame/GameInstructions';
+import { GameCanvas } from '../atoms';
+import { GameControls ,GameInstructions } from '../molecules';
 
 interface Paddle {
   x: number;
