@@ -4,8 +4,8 @@ import Dialog from '@mui/material/Dialog';
 import DialogTitle from '@mui/material/DialogTitle';
 import DialogContent from '@mui/material/DialogContent';
 import DialogActions from '@mui/material/DialogActions';
-import PongGame from '../components/PongGame';
-import { Button, TextField } from '../src/components/ui';
+import PongGame from '@/src/components/organisms/PongGame';
+import { Button, TextField } from '../components/atoms';
 
 export default function Home() {
   const [playerName, setPlayerName] = useState('');
