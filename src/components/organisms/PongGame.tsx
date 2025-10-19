@@ -28,7 +28,7 @@ const PongGame: React.FC = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [score, setScore] = useState<Score>({ player: 0, computer: 0 });
   const [gameStarted, setGameStarted] = useState(false);
-  
+
   // Game constants
   const CANVAS_WIDTH = 800;
   const CANVAS_HEIGHT = 600;
@@ -37,7 +37,7 @@ const PongGame: React.FC = () => {
   const BALL_RADIUS = 8;
   const PADDLE_SPEED = 6;
   const BALL_SPEED = 5;
-  
+
   // Refs for game state
   const playerPaddleRef = useRef<Paddle>({
     x: 20,
@@ -46,7 +46,7 @@ const PongGame: React.FC = () => {
     height: PADDLE_HEIGHT,
     speed: PADDLE_SPEED,
   });
-  
+
   const computerPaddleRef = useRef<Paddle>({
     x: CANVAS_WIDTH - 30,
     y: CANVAS_HEIGHT / 2 - PADDLE_HEIGHT / 2,
@@ -54,7 +54,7 @@ const PongGame: React.FC = () => {
     height: PADDLE_HEIGHT,
     speed: PADDLE_SPEED,
   });
-  
+
   const ballRef = useRef<Ball>({
     x: CANVAS_WIDTH / 2,
     y: CANVAS_HEIGHT / 2,
@@ -63,7 +63,7 @@ const PongGame: React.FC = () => {
     dy: BALL_SPEED,
     speed: BALL_SPEED,
   });
-  
+
   const keysRef = useRef<{ [key: string]: boolean }>({});
   const mouseYRef = useRef<number>(CANVAS_HEIGHT / 2);
   const animationRef = useRef<number>();
@@ -77,13 +77,26 @@ const PongGame: React.FC = () => {
   };
 
   // Draw rectangle helper
-  const drawRect = (ctx: CanvasRenderingContext2D, x: number, y: number, w: number, h: number, color: string) => {
+  const drawRect = (
+    ctx: CanvasRenderingContext2D,
+    x: number,
+    y: number,
+    w: number,
+    h: number,
+    color: string,
+  ) => {
     ctx.fillStyle = color;
     ctx.fillRect(x, y, w, h);
   };
 
   // Draw circle helper
-  const drawCircle = (ctx: CanvasRenderingContext2D, x: number, y: number, r: number, color: string) => {
+  const drawCircle = (
+    ctx: CanvasRenderingContext2D,
+    x: number,
+    y: number,
+    r: number,
+    color: string,
+  ) => {
     ctx.fillStyle = color;
     ctx.beginPath();
     ctx.arc(x, y, r, 0, Math.PI * 2);
@@ -91,7 +104,14 @@ const PongGame: React.FC = () => {
   };
 
   // Draw text helper
-  const drawText = (ctx: CanvasRenderingContext2D, text: string, x: number, y: number, color: string, size: number) => {
+  const drawText = (
+    ctx: CanvasRenderingContext2D,
+    text: string,
+    x: number,
+    y: number,
+    color: string,
+    size: number,
+  ) => {
     ctx.fillStyle = color;
     ctx.font = `${size}px Arial`;
     ctx.fillText(text, x, y);
@@ -110,14 +130,14 @@ const PongGame: React.FC = () => {
   // Update player paddle position
   const updatePlayerPaddle = () => {
     const paddle = playerPaddleRef.current;
-    
+
     // Mouse control
     const targetY = mouseYRef.current - paddle.height / 2;
     const diff = targetY - paddle.y;
     if (Math.abs(diff) > 1) {
       paddle.y += diff * 0.1;
     }
-    
+
     // Keyboard control
     if (keysRef.current['ArrowUp']) {
       paddle.y -= paddle.speed;
@@ -125,7 +145,7 @@ const PongGame: React.FC = () => {
     if (keysRef.current['ArrowDown']) {
       paddle.y += paddle.speed;
     }
-    
+
     // Keep paddle within bounds
     if (paddle.y < 0) paddle.y = 0;
     if (paddle.y + paddle.height > CANVAS_HEIGHT) {
@@ -137,11 +157,11 @@ const PongGame: React.FC = () => {
   const updateComputerPaddle = () => {
     const paddle = computerPaddleRef.current;
     const ball = ballRef.current;
-    
+
     // Simple AI: follow the ball
     const paddleCenter = paddle.y + paddle.height / 2;
     const diff = ball.y - paddleCenter;
-    
+
     if (Math.abs(diff) > 10) {
       if (diff > 0) {
         paddle.y += paddle.speed * 0.7; // Slightly slower than player
@@ -149,7 +169,7 @@ const PongGame: React.FC = () => {
         paddle.y -= paddle.speed * 0.7;
       }
     }
-    
+
     // Keep paddle within bounds
     if (paddle.y < 0) paddle.y = 0;
     if (paddle.y + paddle.height > CANVAS_HEIGHT) {
@@ -162,15 +182,15 @@ const PongGame: React.FC = () => {
     const ball = ballRef.current;
     const playerPaddle = playerPaddleRef.current;
     const computerPaddle = computerPaddleRef.current;
-    
+
     ball.x += ball.dx;
     ball.y += ball.dy;
-    
+
     // Wall collision (top and bottom)
     if (ball.y - ball.radius < 0 || ball.y + ball.radius > CANVAS_HEIGHT) {
       ball.dy = -ball.dy;
     }
-    
+
     // Player paddle collision
     if (ball.dx < 0 && checkPaddleCollision(ball, playerPaddle)) {
       ball.dx = -ball.dx;
@@ -179,7 +199,7 @@ const PongGame: React.FC = () => {
       const hitPosition = (ball.y - paddleCenter) / (playerPaddle.height / 2);
       ball.dy = hitPosition * ball.speed;
     }
-    
+
     // Computer paddle collision
     if (ball.dx > 0 && checkPaddleCollision(ball, computerPaddle)) {
       ball.dx = -ball.dx;
@@ -188,15 +208,15 @@ const PongGame: React.FC = () => {
       const hitPosition = (ball.y - paddleCenter) / (computerPaddle.height / 2);
       ball.dy = hitPosition * ball.speed;
     }
-    
+
     // Score points
     if (ball.x - ball.radius < 0) {
       // Computer scores
-      setScore(prev => ({ ...prev, computer: prev.computer + 1 }));
+      setScore((prev) => ({ ...prev, computer: prev.computer + 1 }));
       resetBall(true);
     } else if (ball.x + ball.radius > CANVAS_WIDTH) {
       // Player scores
-      setScore(prev => ({ ...prev, player: prev.player + 1 }));
+      setScore((prev) => ({ ...prev, player: prev.player + 1 }));
       resetBall(false);
     }
   };
@@ -205,23 +225,23 @@ const PongGame: React.FC = () => {
   const gameLoop = () => {
     const canvas = canvasRef.current;
     if (!canvas) return;
-    
+
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
-    
+
     // Clear canvas
     drawRect(ctx, 0, 0, CANVAS_WIDTH, CANVAS_HEIGHT, '#000');
-    
+
     // Draw center line
     for (let i = 0; i < CANVAS_HEIGHT; i += 20) {
       drawRect(ctx, CANVAS_WIDTH / 2 - 1, i, 2, 10, '#fff');
     }
-    
+
     // Update game objects
     updatePlayerPaddle();
     updateComputerPaddle();
     updateBall();
-    
+
     // Draw paddles
     drawRect(
       ctx,
@@ -229,7 +249,7 @@ const PongGame: React.FC = () => {
       playerPaddleRef.current.y,
       playerPaddleRef.current.width,
       playerPaddleRef.current.height,
-      '#0f0'
+      '#0f0',
     );
     drawRect(
       ctx,
@@ -237,16 +257,16 @@ const PongGame: React.FC = () => {
       computerPaddleRef.current.y,
       computerPaddleRef.current.width,
       computerPaddleRef.current.height,
-      '#f00'
+      '#f00',
     );
-    
+
     // Draw ball
     drawCircle(ctx, ballRef.current.x, ballRef.current.y, ballRef.current.radius, '#fff');
-    
+
     // Draw scores
     drawText(ctx, score.player.toString(), CANVAS_WIDTH / 4, 50, '#0f0', 40);
     drawText(ctx, score.computer.toString(), (CANVAS_WIDTH * 3) / 4, 50, '#f00', 40);
-    
+
     // Continue game loop
     animationRef.current = requestAnimationFrame(gameLoop);
   };
@@ -259,17 +279,17 @@ const PongGame: React.FC = () => {
         keysRef.current[e.key] = true;
       }
     };
-    
+
     const handleKeyUp = (e: KeyboardEvent) => {
       if (e.key === 'ArrowUp' || e.key === 'ArrowDown') {
         e.preventDefault();
         keysRef.current[e.key] = false;
       }
     };
-    
+
     window.addEventListener('keydown', handleKeyDown);
     window.addEventListener('keyup', handleKeyUp);
-    
+
     return () => {
       window.removeEventListener('keydown', handleKeyDown);
       window.removeEventListener('keyup', handleKeyUp);
@@ -280,7 +300,7 @@ const PongGame: React.FC = () => {
   const handleMouseMove = (e: React.MouseEvent<HTMLCanvasElement>) => {
     const canvas = canvasRef.current;
     if (!canvas) return;
-    
+
     const rect = canvas.getBoundingClientRect();
     mouseYRef.current = e.clientY - rect.top;
   };
@@ -294,7 +314,7 @@ const PongGame: React.FC = () => {
         cancelAnimationFrame(animationRef.current);
       }
     }
-    
+
     return () => {
       if (animationRef.current) {
         cancelAnimationFrame(animationRef.current);
@@ -314,7 +334,9 @@ const PongGame: React.FC = () => {
   };
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', padding: '20px' }}>
+    <div
+      style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', padding: '20px' }}
+    >
       <h1 style={{ color: '#fff', marginBottom: '20px' }}>Pong Game</h1>
       <GameCanvas
         canvasRef={canvasRef}

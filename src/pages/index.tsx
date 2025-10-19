@@ -25,17 +25,26 @@ export default function Home() {
     <>
       <Head>
         <title>Pong Game - React/Next.js TypeScript</title>
-        <meta name="description" content="A simple Pong game built with React, Next.js, and TypeScript" />
+        <meta
+          name="description"
+          content="A simple Pong game built with React, Next.js, and TypeScript"
+        />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main style={{ backgroundColor: '#000', minHeight: '100vh', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', padding: '20px' }}>
+      <main
+        style={{
+          backgroundColor: '#000',
+          minHeight: '100vh',
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'center',
+          alignItems: 'center',
+          padding: '20px',
+        }}
+      >
         {/* プレイヤー名入力ダイアログ */}
-        <Dialog 
-          open={dialogOpen && !gameStarted} 
-          onClose={() => {}} 
-          disableEscapeKeyDown
-        >
+        <Dialog open={dialogOpen && !gameStarted} onClose={() => {}} disableEscapeKeyDown>
           <DialogTitle>ゲーム開始</DialogTitle>
           <DialogContent>
             <div style={{ paddingTop: '10px', minWidth: '300px' }}>
@@ -59,7 +68,7 @@ export default function Home() {
             <p>プレイヤー: {playerName}</p>
           </div>
         )}
-        
+
         <PongGame />
       </main>
     </>

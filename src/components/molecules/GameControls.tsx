@@ -20,12 +20,7 @@ const GameControls: React.FC<GameControlsProps> = ({ gameStarted, onStartGame, o
           Start Game
         </Button>
       ) : (
-        <Button
-          variant="contained"
-          color="error"
-          onClick={onResetGame}
-          sx={{ fontWeight: 'bold' }}
-        >
+        <Button variant="contained" color="error" onClick={onResetGame} sx={{ fontWeight: 'bold' }}>
           Reset Game
         </Button>
       )}
