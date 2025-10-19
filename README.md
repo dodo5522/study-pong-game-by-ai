@@ -61,7 +61,7 @@ npm start
 ├── pages/
 │   ├── _app.tsx          # Next.jsアプリラッパー
 │   └── index.tsx         # ホームページ
-├── next.config.js        # Next.js設定
+├── next.config.ts        # Next.js設定
 ├── tsconfig.json         # TypeScript設定
 └── package.json          # 依存関係とスクリプト
 ```
