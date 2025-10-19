@@ -25,6 +25,9 @@ React、Next.js、TypeScriptを使用したクラシックなピンポンゲー�
 ```bash
 # 依存関係をインストール
 npm install
+
+# Huskyフックを初期化（自動的に実行されます）
+npm run prepare
 ```
 
 ## 開発
@@ -35,6 +38,26 @@ npm run dev
 ```
 
 ブラウザで [http://localhost:3000](http://localhost:3000) を開きます。
+
+### リンティング
+
+プロジェクトにはESLintとPrettierが設定されています:
+
+```bash
+# コードをリンティング
+npm run lint
+
+# コードを自動修正
+npx eslint --ext .ts,.tsx . --fix
+
+# Prettierでフォーマット
+npx prettier --write "**/*.{js,jsx,ts,tsx,json,md}"
+```
+
+コミット時には、`husky`と`lint-staged`により自動的にリンターが実行されます。
+
+- TypeScript/TSXファイル: ESLintで自動修正
+- JS/JSX/JSON/MDファイル: Prettierで自動フォーマット
 
 ## プロダクションビルド
 
@@ -52,6 +75,14 @@ npm start
 - **Next.js** - Reactフレームワーク
 - **TypeScript** - 型安全性
 - **HTML5 Canvas** - ゲームレンダリング
+- **MUI (Material-UI)** - UIコンポーネントライブラリ
+
+### 開発ツール
+
+- **ESLint** - コード品質チェック
+- **Prettier** - コードフォーマッター
+- **Husky** - Gitフック管理
+- **lint-staged** - ステージングされたファイルのリンティング
 
 ## プロジェクト構造
 
