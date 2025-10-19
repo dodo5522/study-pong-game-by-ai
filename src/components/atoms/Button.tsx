@@ -18,13 +18,7 @@ const Button: React.FC<ButtonProps> = ({
   ...props
 }) => {
   return (
-    <MuiButton
-      variant={variant}
-      color={color}
-      onClick={onClick}
-      disabled={disabled}
-      {...props}
-    >
+    <MuiButton variant={variant} color={color} onClick={onClick} disabled={disabled} {...props}>
       {children}
     </MuiButton>
   );
